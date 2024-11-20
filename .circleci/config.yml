@@ -1,0 +1,156 @@
+version: 2.1
+
+executors:
+  my-executor:
+    docker:
+      - image: cimg/base:current
+
+jobs:
+  job_a:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job A
+          command: echo "Running Job A"
+
+  job_b:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job B
+          command: echo "Running Job B"
+
+  job_c:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job C
+          command: echo "Running Job C"
+
+  job_d:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job D
+          command: echo "Running Job D"
+
+  job_e:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job E
+          command: echo "Running Job E"
+
+  job_f:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job F
+          command: echo "Running Job F"
+
+  job_g:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job G
+          command: echo "Running Job G"
+
+  job_h:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job H
+          command: echo "Running Job H"
+
+  job_i:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job I
+          command: echo "Running Job I"
+
+  job_j:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job J
+          command: echo "Running Job J"
+
+  job_k:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job K
+          command: echo "Running Job K"
+
+  job_l:
+    executor: my-executor
+    steps:
+      - checkout
+      - run:
+          name: Job L
+          command: echo "Running Job L"
+
+workflows:
+  version: 2
+  complex_workflow:
+    jobs:
+      - job_a
+      - job_b
+      - job_c
+      - job_d:
+          requires:
+            - job_a
+            - job_b
+            - job_c
+      - job_e:
+          requires:
+            - job_a
+            - job_b
+            - job_d
+      - job_f:
+          requires:
+            - job_c
+            - job_d
+            - job_e
+      - job_g:
+          requires:
+            - job_d
+            - job_e
+            - job_f
+      - job_h:
+          requires:
+            - job_e
+            - job_f
+            - job_g
+      - job_i:
+          requires:
+            - job_f
+            - job_g
+            - job_h
+      - job_j:
+          requires:
+            - job_g
+            - job_h
+            - job_i
+      - job_k:
+          requires:
+            - job_h
+            - job_i
+            - job_j
+      - job_l:
+          requires:
+            - job_i
+            - job_j
+            - job_k
